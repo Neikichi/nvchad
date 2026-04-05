@@ -1,0 +1,14 @@
+{
+  "My Custom Snippet": {
+    "prefix": "ifndef",
+    "body": [
+      "#ifndef ${TM_FILENAME_BASE/(\\W)/_/g}_HPP",
+      "#define ${TM_FILENAME_BASE/(\\W)/_/g}_HPP",
+      "",
+      "$0",
+      "",
+      "#endif"
+    ],
+    "description": "Header guard"
+  }
+}

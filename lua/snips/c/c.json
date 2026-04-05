@@ -1,0 +1,12 @@
+{
+    "ft_printf variable": {
+        "prefix": "ftpv",
+        "body": ["ft_printf(\"$1 = [%${2:d}]\\n\", ${1:var}$3);"],
+        "description": "Call ft_printf() to log value of a variable"
+    },
+    "ft_printf": {
+        "prefix": "ftp",
+        "body": ["ft_printf(\"$1\\n\");"],
+        "description": "Call ft_printf()"
+    }
+}
