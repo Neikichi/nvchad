@@ -1,0 +1,17 @@
+# --- Neovim / NvChad Runtime & Cache ---
+.lazy.lua
+.lazy.json
+lazy-lock.json
+
+# --- Temporary/Backup Files ---
+*.swp
+*.swo
+*~
+.netrwhist
+
+# --- Data, Cache, and State directories ---
+# (Only needed if you accidentally initialized git in the root ~/.config/nvim 
+# instead of just inside your custom 'lua' or 'lazy' directory)
+.data/
+.cache/
+.state/
