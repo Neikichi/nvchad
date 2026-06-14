@@ -10,13 +10,13 @@ return {
         auto_trigger = true,
         hide_during_completion = false,
         keymap = {
-
           accept = "<M-l>", -- Alt + l to accept the ghost text
           accept_word = "<M-w>",
           accept_line = "<M-e>",
           next = "<M-]>",
           prev = "<M-[>",
           dismiss = "<C-]>",
+          toggle_auto_trigger = "<M-t>",
         },
       },
       filetypes = {
