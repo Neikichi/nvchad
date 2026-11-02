@@ -145,6 +145,10 @@ end, { desc = "Undotree toggle" })
 map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "telescope diagnostics" })
 
 -- cmp and inlay hints
+-- Toggle LSP inlay hints for current buffer
 map("n", "<leader>dh", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, { desc = "Toggle inlay hints" })
+  local bufnr = vim.api.nvim_get_current_buf()
+  local is_enabled = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
+  vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = bufnr })
+  vim.notify("Inlay hints " .. (is_enabled and "disabled" or "enabled"), vim.log.levels.INFO)
+end, { desc = "Toggle LSP Inlay Hints" })

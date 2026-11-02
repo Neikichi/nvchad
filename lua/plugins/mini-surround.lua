@@ -1,6 +1,7 @@
 return {
   {
     "echasnovski/mini.surround",
+    lazy = false,
     keys = { "sa", "sd", "sr", "sf", "sF", "sh" },
     -- init = function()
     --   -- Register the descriptions with WhichKey cleanly

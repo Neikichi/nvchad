@@ -98,22 +98,76 @@ vim.lsp.config("nginx_language_server", {
 vim.lsp.enable "nginx_language_server"
 
 -- Roslyn (C# / .NET)
-vim.lsp.config("roslyn_ls", {
-  filetypes = { "cs", "razor" },
+-- vim.lsp.config("roslyn_ls", {
+--   filetypes = { "cs", "razor" },
+--   settings = {
+--     ["csharp|background_analysis"] = {
+--       dotnet_analyzer_diagnostics_scope = "openFiles",
+--       dotnet_compiler_diagnostics_scope = "openFiles",
+--     },
+--     ["csharp|completion"] = {
+--       dotnet_complete_function_arguments = true,
+--       dotnet_provide_regex_completions = true,
+--       dotnet_show_completion_items_from_unimported_namespaces = true,
+--       dotnet_show_name_completion_suggestions = true,
+--     },
+--   },
+-- })
+-- vim.lsp.enable "roslyn_ls"
+
+-- Jsonls (JSON)
+-- vim.lsp.config("jsonls", {
+-- settings = {
+--   json = {
+--     schemas = require("schemastore").json.schemas(),
+--     validate = { enable = true },
+--   },
+-- },
+-- })
+
+-- Jsonls
+-- Jsonls (JSON, JSONC, JSON5)
+vim.lsp.config("jsonls", {
+  filetypes = { "json", "jsonc", "json5" },
   settings = {
-    ["csharp|background_analysis"] = {
-      dotnet_analyzer_diagnostics_scope = "openFiles",
-      dotnet_compiler_diagnostics_scope = "openFiles",
-    },
-    ["csharp|completion"] = {
-      dotnet_complete_function_arguments = true,
-      dotnet_provide_regex_completions = true,
-      dotnet_show_completion_items_from_unimported_namespaces = true,
-      dotnet_show_name_completion_suggestions = true,
+    json = {
+      -- Attach SchemaStore for auto-completion & validation on package.json, appsettings, etc.
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
     },
   },
+  -- on_attach = function(client, bufnr)
+  --   -- 1. Hand off formatting to Conform (prettierd)
+  --   client.server_capabilities.documentFormattingProvider = false
+  --   client.server_capabilities.documentRangeFormattingProvider = false
+  --
+  --   -- 2. Turn off VS Code-dependent code actions (fixes `json.sort` error)
+  --   client.server_capabilities.codeActionProvider = false
+  --
+  --   require("nvchad.configs.lspconfig").on_attach(client, bufnr)
+  -- end,
+  -- capabilities = require("nvchad.configs.lspconfig").capabilities,
 })
-vim.lsp.enable "roslyn_ls"
+vim.lsp.enable "jsonls"
+
+-- biome
+-- vim.lsp.config("biome", {
+--   cmd = { "biome", "lsp-proxy" },
+--   filetypes = { "json", "jsonc", "json5" },
+--   root_markers = { "biome.json", "biome.jsonc", ".git" },
+--
+--   root_dir = function(bufnr, on_dir)
+--     local root = vim.fs.root(bufnr, { "biome.json", "biome.jsonc", ".git", "package.json" }) or vim.fn.getcwd()
+--     on_dir(root)
+--   end,
+--
+--   workspace_required = false,
+--   single_file_support = true,
+--   -- Native Neovim 0.11 on_attach callback
+--   on_attach = require("nvchad.configs.lspconfig").on_attach,
+--   capabilities = require("nvchad.configs.lspconfig").capabilities,
+-- })
+-- vim.lsp.enable "biome"
 
 -- 3. Batch activate your vanilla baseline language servers
 local standard_servers = { "html", "cssls" }

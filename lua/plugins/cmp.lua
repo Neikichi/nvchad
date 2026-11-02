@@ -4,6 +4,7 @@ return {
     event = { "User FilePost", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     opts = function(_, opts)
       opts.sources = opts.sources or {}

@@ -49,6 +49,12 @@ vim.opt.sidescrolloff = 10 -- Keep 10 columns to left/right of cursor
 -- 📋 System Integration
 vim.opt.clipboard = "unnamedplus" -- Sync with Windows/System clipboard
 
+-- Folding
+vim.opt.foldmethod = "expr" -- Use expression for folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use Treesitter
+vim.opt.foldlevel = 99 -- Open all folds by default
+vim.opt.foldenable = true -- Enable folding
+
 -- Filetype Detection & Plugins
 vim.filetype.add {
   filename = {
